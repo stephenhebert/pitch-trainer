@@ -32,7 +32,8 @@ jobs:
       - name: Build
         run: |
           npm ci
-          npm run build
+          # repo name is pitch-trainer
+          npm run build -- --base=/pitch-trainer/
       - name: Deploy
         uses: actions/upload-pages-artifact@v3
         with:
