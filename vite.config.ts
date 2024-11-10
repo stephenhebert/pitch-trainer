@@ -1,0 +1,11 @@
+import { defineConfig } from 'vite'
+import UnoCSS from 'unocss/vite'
+import Vue from '@vitejs/plugin-vue'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [
+    UnoCSS(),
+    Vue()
+  ],
+})
