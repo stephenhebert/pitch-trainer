@@ -24,6 +24,7 @@ const isWhiteKey = toRef(() => value.keyColor === 'white')
     <ToggleButton
       unstyled
       allow-multiple
+      min="1"
       :value="value"
       v-model="modelValue"
       class="ring-1 ring-black rounded relative is-[.selected]:after:(content-[''] absolute inset-0 bg-blue-400 opacity-50)"

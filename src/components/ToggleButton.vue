@@ -1,7 +1,13 @@
 <script setup lang="ts">
 import { useToggle } from '../composables/useToggle'
 
-const { value, allowMultiple, noDeselect } = defineProps({
+const { 
+  value, 
+  allowMultiple, 
+  noDeselect,
+  min,
+  max,
+} = defineProps({
   label: {
     type: String,
   },
@@ -15,11 +21,13 @@ const { value, allowMultiple, noDeselect } = defineProps({
   noDeselect: {
     type: Boolean,
   },
+  min: {},
+  max: {},
 })
 
 const modelValue = defineModel()
 
-const { isSelected, toggle } = useToggle({modelValue, allowMultiple, allowDeselect: !noDeselect })
+const { isSelected, toggle } = useToggle({modelValue, allowMultiple, allowDeselect: !noDeselect, min, max })
 </script>
 
 <template>

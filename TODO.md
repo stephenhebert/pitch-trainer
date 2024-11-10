@@ -14,6 +14,7 @@
    - [ ] collapse to tabs
    - [ ] click and drag keyboard select
  - [ ] game sounds?
+ - [ ] typescript
  - [x] staff notation on note card
   https://github.com/CoderLine/alphaTab
   https://github.com/0xfe/vexflow

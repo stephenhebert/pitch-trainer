@@ -3,11 +3,9 @@ import NoteKeyboardInputKey from './NoteKeyboardInputKey.vue'
 import notes from '../data/notes'
 
 const modelValue = defineModel()
-
 </script>
 
 <template>
-
   <ul class="flex flex-row">
     <NoteKeyboardInputKey :value="notes.do" v-model="modelValue" />
     <NoteKeyboardInputKey :value="notes.di" v-model="modelValue" />
@@ -22,6 +20,4 @@ const modelValue = defineModel()
     <NoteKeyboardInputKey :value="notes.li" v-model="modelValue" />
     <NoteKeyboardInputKey :value="notes.ti" v-model="modelValue" />
   </ul>
-
 </template>
-../data/notes
