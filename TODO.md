@@ -13,6 +13,7 @@
  - ui/ux
    - [ ] collapse to tabs
    - [ ] click and drag keyboard select
+   - [ ] fonts
  - [ ] game sounds?
  - [ ] typescript
  - [x] staff notation on note card

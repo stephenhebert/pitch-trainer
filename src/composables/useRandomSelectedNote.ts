@@ -17,7 +17,6 @@ function randomizeNotes() {
 watch( 
   nextNotes,
   (value) => {
-    console.log('nextNotes', value)
     if (value.length === 0 && selectedNotesCopy.value.length > 0) {
       randomizeNotes()
     }
