@@ -52,7 +52,7 @@ const simpleScoreCard = computed(() => {
     const label = `${note.solfege} (${note.name})`
     const right = score.right
     const total = right + score.wrong
-    const percentage = right / total * 100
+    const percentage = right / (total || 1) * 100
 
     return {
       label,
