@@ -14,7 +14,8 @@ const { settings } = defineProps({
 const selectedNotes = toRef(() => settings.selectedNotes)
 const { scoreCard } = useStats()
 
-const simpleScoreCard = computed(() => {
+
+const relevantScores = computed(() => {
 
   const allNotes = [
     notes.do,
@@ -31,7 +32,7 @@ const simpleScoreCard = computed(() => {
     notes.ti,
   ]
 
-  const card = allNotes.reduce((acc, note) => {
+  return allNotes.reduce((acc, note) => {
     const score = scoreCard.value.get(note)
     if (score) {
       acc.push([
@@ -47,20 +48,33 @@ const simpleScoreCard = computed(() => {
     }
     return acc
   }, [])
+})
 
-  return card.map(([note,score]) => {
+const simpleScoreCard = computed(() => {
+  return relevantScores.value.map(([note,score]) => {
     const label = `${note.solfege} (${note.name})`
     const right = score.right
     const total = right + score.wrong
-    const percentage = right / (total || 1) * 100
+    const percentage = (right / (total || 1) * 100).toFixed(0)
 
     return {
       label,
-      value: `${right}/${total} (${percentage.toFixed(0)}%)`
+      value: `${right}/${total} (${percentage}%)`
     }
   })
 })
-scoreCard.value.entries
+
+const totals = computed(() => {
+  const totalRight = relevantScores.value.reduce((acc, [_, score]) => acc + score.right, 0)
+  const totalWrong = relevantScores.value.reduce((acc, [_, score]) => acc + score.wrong, 0)
+  const totalTotal = totalRight + totalWrong
+  const totalPercentage = (totalRight / (totalTotal || 1) * 100).toFixed(0)
+
+  return {
+    label: 'Total',
+    value: `${totalRight}/${totalTotal} (${totalPercentage}%)`
+  }
+})
 </script>
 
 <template>
@@ -72,6 +86,10 @@ scoreCard.value.entries
       >
         <td>{{ entry.label }}</td>
         <td class="text-right">{{ entry.value }}</td>
+      </tr>
+      <tr class="fw-600">
+        <td>{{ totals.label }}</td>
+        <td class="text-right">{{ totals.value }}</td>
       </tr>
 
     </table>
